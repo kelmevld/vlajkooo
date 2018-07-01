@@ -1,0 +1,24 @@
+
+<ul>
+  <li *ngFor="let stud of students | namep:nameofstudent">{{ stud.ime }} <br>
+    <button (click)="getStudentById(stud.indeks)">Use ID</button><br>
+    <td><a class="btn btn-primary" [routerLink]="['/editStudent', stud.indeks]">Edit</a></td>
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="nameofstudent">
+<form [formGroup]="form" (ngSubmit)="createStudent()" > 
+  <div >
+    <i class="fa fa-address-card-o">Job Title</i>
+    <input type="input" formControlName="name">
+  </div>
+  <div>
+    <i class="fa fa-address-card-o">Job Title</i>
+    <textarea type="input" formControlName="lastName"></textarea>
+  </div>
+  <i class="fa fa-address-card-o">Job Title</i>
+  <select size="3" formControlName="smer">
+    <option *ngFor="let stud of students" value={{stud.indeks}}>{{ stud.ime }}</option>
+  </select>
+  <button type="submit" class="btn btn-primary" style="margin-top:15px;">Create Job</button>
+</form>
